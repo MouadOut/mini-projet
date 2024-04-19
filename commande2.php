@@ -91,22 +91,30 @@
             </div>
         </form>
         <?php
-        if(isset($_POST['payer'])) {
-            $lien = connectMaBasi();
-            
-            // Récupérer la valeur du type de paiement
-            $type_paiement = $_POST['payer'];
+        try {
+            if(isset($_POST['payer'])) {
+                $lien = connectMaBasi();
+                
+                // Récupérer la valeur du type de paiement
+                $type_paiement = $_POST['payer'];
 
-            // Insertion des données dans la table commande
-            $sql_insert_commande = "INSERT INTO commande (Prix_Total, Type_Paiement) VALUES ($total, '$type_paiement')";
-            mysqli_query($lien , $sql_insert_commande) or die ('Erreur SQL !'.$sql_insert_commande.'<br>'.mysqli_error($lien));
-            
-            // Suppression des éléments du panier après la commande
-            $sql_delete_panier = "DELETE FROM panier";
-            mysqli_query($lien , $sql_delete_panier) or die ('Erreur SQL !'.$sql_delete_panier.'<br>'.mysqli_error($lien));
-            
-            echo "<h5>Votre commande a été finalisée avec succès. Nous vous remercions pour votre achat.</h5>";
+                // Insertion des données dans la table commande
+                $sql_insert_commande = "INSERT INTO commande (Prix_Total, Type_Paiement) VALUES ($total, '$type_paiement')";
+                mysqli_query($lien , $sql_insert_commande) or die ('Erreur SQL !'.$sql_insert_commande.'<br>'.mysqli_error($lien));
+                
+                // Suppression des éléments du panier après la commande
+                $sql_delete_panier = "DELETE FROM panier";
+                mysqli_query($lien , $sql_delete_panier) or die ('Erreur SQL !'.$sql_delete_panier.'<br>'.mysqli_error($lien));
+                
+                echo "<h5>Votre commande a été finalisée avec succès. Nous vous remercions pour votre achat.</h5>";
+            }
+        }catch (mysqli_sql_exception $e) {}
+
+        if(isset($_POST['acceuil'])) {
+            header("Location: index.html");
+            exit();
         }
+        
         ?>
 
 
