@@ -3,6 +3,27 @@
         $basi = mysqli_connect('localhost', 'root', '', 'mini-projet');
         return $basi;
     }
+
+    $lien = connectMaBasi();
+
+    if(isset($_POST['delete'])) {
+        $reference = $_POST['reference'];
+    
+        // Requête SQL pour supprimer le produit du panier
+        $sql = "DELETE FROM panier WHERE reference='$reference'";
+    
+        if ($lien->query($sql) === TRUE) {
+            header('Location:panier.php');
+            exit();
+        } else {
+            echo "Erreur : " . $sql . "<br>" . $lien->error;
+        }
+    }
+
+    if(isset($_POST['poursuivre'])) {
+        header('Location: index.html#featured');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,25 +142,6 @@
             }
         } else {
             echo "<tr><td colspan='4'>Le panier est vide.</td></tr>";
-        }
-
-        if(isset($_POST['delete'])) {
-            $reference = $_POST['reference'];
-        
-            // Requête SQL pour supprimer le produit du panier
-            $sql = "DELETE FROM panier WHERE reference='$reference'";
-        
-            if ($lien->query($sql) === TRUE) {
-                header('Location:panier.php');
-                exit();
-            } else {
-                echo "Erreur : " . $sql . "<br>" . $lien->error;
-            }
-        }
-
-        if(isset($_POST['poursuivre'])) {
-            header('Location: index.html#featured');
-            exit();
         }
 
         ?>

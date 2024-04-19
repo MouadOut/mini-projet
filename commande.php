@@ -3,6 +3,28 @@
         $basi = mysqli_connect('localhost', 'root', '', 'mini-projet');
         return $basi;
     }
+
+    if (isset($_POST['finaliser'])) {
+        $sql_panier_count = "SELECT COUNT(*) as total FROM panier";
+        $result_panier_count = mysqli_query($lien, $sql_panier_count);
+        $row_panier_count = mysqli_fetch_assoc($result_panier_count);
+        $total_panier = $row_panier_count['total'];
+    
+        if ($total_panier == 0) {
+        } else {
+            if (isset($_COOKIE['login'])) {
+                header('Location: commande2.php');
+                exit();
+            } else {
+                header('Location: connexion.php');
+                exit();
+            }
+        }
+    }
+    if(isset($_POST['poursuivre'])) {
+        header('Location: index.html#featured');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +109,7 @@
         if (mysqli_num_rows($result_panier) > 0) {
             // Affichage des données sous forme de tableau HTML
             while($row_panier = mysqli_fetch_assoc($result_panier)) {
-                echo "<form action='panier.php' method='post'>";
+                echo "<form action='commande.php' method='post'>";
                 echo "<tr>";
                 echo "<td><img src='assets/imgs/".$row_panier["images"]."' class='product-image'></td>";
                 // echo "<td>" . $row_panier["images"] . "</td>";
@@ -113,33 +135,11 @@
             $sql = "DELETE FROM panier WHERE reference='$reference'";
         
             if ($lien->query($sql) === TRUE) {
-                header('Location:panier.php');
+                header('Location:commande.php');
                 exit();
             } else {
                 echo "Erreur : " . $sql . "<br>" . $lien->error;
             }
-        }
-
-        if (isset($_POST['finaliser'])) {
-            $sql_panier_count = "SELECT COUNT(*) as total FROM panier";
-            $result_panier_count = mysqli_query($lien, $sql_panier_count);
-            $row_panier_count = mysqli_fetch_assoc($result_panier_count);
-            $total_panier = $row_panier_count['total'];
-        
-            if ($total_panier == 0) {
-            } else {
-                if (isset($_COOKIE['login'])) {
-                    header('Location: commande2.php');
-                    exit();
-                } else {
-                    header('Location: connexion.php');
-                    exit();
-                }
-            }
-        }
-        if(isset($_POST['poursuivre'])) {
-            header('Location: index.html#featured');
-            exit();
         }
 
         ?>
