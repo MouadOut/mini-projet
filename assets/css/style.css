@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap');
+
+.nav-buttons {
+    margin-left: 35%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins' , sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+h5 {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+h6 {
+    color: #D8D8D8;
+}
+
+
+button {
+    font-size: 0.8rem;
+    font-weight: 900;
+    outline: none;
+    border: none;
+    background-color: #1d1d1d;
+    color: aliceblue;
+    padding: 13px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+button:hover {
+    background-color: coral;
+}
+
+.navbar .container .collapse .btn:hover {
+    background-color: #F8F9FA;
+}
+
+.navbar {
+    font-size: 16px;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    top: 0;
+    left: 0;
+    box-shadow: 0 3px 5px gray;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    padding: 0 20px;
+    color: black;
+    transition: 0.4s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar i:hover,
+.navbar-light .navbar-nav .nav-link.active
+.navbar i:hover {
+    color: coral;
+}
+
+.navbar i {
+    font-size: 1.2rem;
+    padding: 0 0.7px;
+    transition: 0.4s ease;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-container input[type="search"] {
+    padding-right: 40px; /* Espacement pour le bouton à l'intérieur de l'entrée de texte */
+}
+
+.search-container button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    margin: 0;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:990px) {
+    .nav-buttons {
+        margin: 10px;
+    }
+    .nav-buttons ul {
+        margin: 1rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .nav-buttons ul .fa-solid {
+        margin: 20px 5px 10px 20px;
+    }
+}
+
+#home {
+    background-image: url('../imgs/setup6.jpg');
+    width: 100%;
+    height: 110vh;
+    background-size: cover;
+    background-position-x: 0px;
+    background-position-y: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#home span {
+    color: white;
+}
+
+#new .one img {
+    width: 100%;
+    height: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#new .one {
+    position: relative;
+}
+
+#new .one .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgb(235, 162, 162);
+    font-weight: bold;
+    transition: 0.4s ease;
+    opacity: 0.7;
+    background-color: rgb(1,1,1);
+    width: 100%;
+    height: 90%;
+}
+
+#new .one .details:hover {
+    background-color: cornsilk;
+}
+
+#new .one .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Product  */
+
+hr {
+    margin: 15px auto;
+    width: 45%;
+    background-color: coral;
+    height: 1px;
+}
+
+.product {
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.product img {
+    transition: 0.3s all;
+}
+
+.product:hover img {
+    opacity: 0.7;
+}
+
+.product .buy-btn {
+    display: none;
+    position: absolute;
+    left: 50%; /* Move it to the horizontal center */
+    transform: translateX(-50%); /* Center it properly */
+    background-color: coral;
+}
+
+.buy-btn:hover {
+    background-color: #1d1d1d;
+}
+
+.product:hover .buy-btn {
+    display: block; /* Display the buy button when hovering over the product */
+}
+
+.fa-star {
+    color: goldenrod;
+}
+
+#banner {
+    background-image: url('../imgs/setup7.jpg');
+    width: 100%;
+    height: 60vh;
+    background-size: cover;
+    background-position-x: -250px;
+    background-position-y: 30px;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#banner h4 {
+    color: coral;
+}
+
+#banner button {
+    background-color: #fb774b;
+}
+
+#banner button:hover {
+    background-color: #1d1d1d;
+}
+
+footer {
+    background-image: url('../imgs/footer1.jpg');
+    background-repeat: no-repeat;
+}
+
+footer h5 {
+    color: #535353;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+footer .copyright a {
+    color: #000;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    margin: 0 5px;
+}
+
+footer .copyright a:hover {
+    color: #fff;
+    background-color: #fb774b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
